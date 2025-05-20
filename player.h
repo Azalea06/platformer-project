@@ -17,31 +17,18 @@ class player {
     player(player &&) = delete;
     player &operator=(player &&) = delete;
 
-    player()  = default;
-    ~player() = default;
-    bool is_player_on_ground;
-    bool is_looking_forward;
-    bool is_moving;
 
 
-    [[nodiscard]] bool is_is_player_on_ground() const {
+    [[nodiscard]] bool get_is_player_on_ground() const {
         return is_player_on_ground;
     }
 
-    [[nodiscard]] bool is_is_looking_forward() const {
+    [[nodiscard]] bool get_is_looking_forward() const {
         return is_looking_forward;
     }
 
-    [[nodiscard]] bool is_is_moving() const {
+    [[nodiscard]] bool get_is_moving() const {
         return is_moving;
-    }
-
-    [[nodiscard]] int get_player_lives() const {
-        return player_lives;
-    }
-
-    [[nodiscard]] int get_max_player_lives() const {
-        return MAX_PLAYER_LIVES;
     }
 
     [[nodiscard]] float get_player_y_velocity() const {
@@ -64,9 +51,6 @@ class player {
         this->is_moving = is_moving;
     }
 
-    void set_player_lives(int player_lives) {
-        this->player_lives = player_lives;
-    }
 
     void set_player_y_velocity(float player_y_velocity) {
         this->player_y_velocity = player_y_velocity;
@@ -88,10 +72,11 @@ class player {
     void update_player_gravity();
 
 private:
-
-    int player_level_scores[LEVEL_COUNT];
-    int player_lives = MAX_PLAYER_LIVES;
-    const int MAX_PLAYER_LIVES = 3;
+    player()  = default;
+    ~player() = default;
+    bool is_player_on_ground;
+    bool is_looking_forward;
+    bool is_moving;
     float player_y_velocity = 0;
     Vector2 player_pos;
 

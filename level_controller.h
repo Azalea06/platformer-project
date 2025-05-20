@@ -1,10 +1,16 @@
 #ifndef LEVEL_CONTROLLER_H
 #define LEVEL_CONTROLLER_H
 #include <raylib.h>
+
+#include "globals.h"
 #include "level.h"
 
 class LevelController {
 public:
+    [[nodiscard]] std::vector<level> get_levels() const {
+        return levels;
+    }
+
      level &get_current_level(){
         return current_level;
     }
@@ -37,11 +43,15 @@ public:
 
     void set_current_level(const level &current_level);
 
+    level FileReadingFunc(const std::string& rleData);
+    std::vector <level> TakeLevelsFromFile(const std::string& filename);
+
 private:
     LevelController()  = default;
     ~LevelController() = default;
     level current_level;
     char* current_level_data{};
+    std::vector <level> levels;
 };
 
 #endif //LEVEL_CONTROLLER_H

@@ -27,7 +27,7 @@ struct level {
     char *data = nullptr;
 };
 */
-
+/*
 inline char LEVEL_1_DATA[] = {
         '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',
         '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '*', '-', '*', '-', '-', '-', '-', '-', '*', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',
@@ -89,15 +89,16 @@ inline level LEVEL_3 = {
         12, 86,
         LEVEL_3_DATA
 };
+*/
 
 inline int level_index = 0;
 inline const int LEVEL_COUNT = 3;
 
-
+/*
 inline level LEVELS[LEVEL_COUNT] = {
         LEVEL_1, LEVEL_2, LEVEL_3
 };
-
+*/
 
 /* Loaded Level Data */
 
@@ -130,12 +131,12 @@ inline Vector2 player_pos;
 inline bool is_player_on_ground;
 inline bool is_looking_forward;
 inline bool is_moving;
-
+*/
 inline int player_level_scores[LEVEL_COUNT];
 
-inline const int MAX_PLAYER_LIVES = 3;
+inline const int MAX_PLAYER_LIVES = 5;
 inline int player_lives = MAX_PLAYER_LIVES;
-*/
+
 
 /* Enemy data */
 

@@ -1,6 +1,6 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
-
+#include "level_controller.h"
 #include "globals.h"
 
 void draw_text(Text &text) {
@@ -20,7 +20,7 @@ void derive_graphics_metrics_from_loaded_level() {
     screen_size.x  = static_cast<float>(GetScreenWidth());
     screen_size.y = static_cast<float>(GetScreenHeight());
 
-    cell_size = screen_size.y / static_cast<float>(LEVELS[level_index].get_rows());
+    cell_size = screen_size.y / static_cast<float>(LevelController::get_instance_level().get_levels()[level_index].get_rows());
     screen_scale = std::min(screen_size.x, screen_size.y) / SCREEN_SCALE_DIVISOR;
 
     // Parallax background setup
@@ -74,7 +74,7 @@ void draw_game_overlay() {
     slight_vertical_offset *= screen_scale;
 
     // Hearts
-    for (int i = 0; i < player::get_instance_player().get_player_lives(); i++) {
+    for (int i = 0; i < player_lives; i++) {
         const float SPACE_BETWEEN_HEARTS = 4.0f * screen_scale;
         draw_image(heart_image, {ICON_SIZE * i + SPACE_BETWEEN_HEARTS, slight_vertical_offset}, ICON_SIZE);
     }
@@ -144,15 +144,15 @@ void draw_player() {
 
     // Pick an appropriate sprite for the player
     if (game_state == GAME_STATE) {
-        if (!player::get_instance_player().is_player_on_ground) {
-            draw_image((player::get_instance_player().is_looking_forward ? player_jump_forward_image : player_jump_backwards_image), pos, cell_size);
+        if (!player::get_instance_player().get_is_player_on_ground()) {
+            draw_image((player::get_instance_player().get_is_looking_forward() ? player_jump_forward_image : player_jump_backwards_image), pos, cell_size);
         }
-        else if (player::get_instance_player().is_moving) {
-            draw_sprite((player::get_instance_player().is_looking_forward ? player_walk_forward_sprite : player_walk_backwards_sprite), pos, cell_size);
-            player::get_instance_player().is_moving = false;
+        else if (player::get_instance_player().get_is_moving()) {
+            draw_sprite((player::get_instance_player().get_is_looking_forward() ? player_walk_forward_sprite : player_walk_backwards_sprite), pos, cell_size);
+            player::get_instance_player().set_is_moving(false);
         }
         else {
-            draw_image((player::get_instance_player().is_looking_forward ? player_stand_forward_image : player_stand_backwards_image), pos, cell_size);
+            draw_image((player::get_instance_player().get_is_looking_forward() ? player_stand_forward_image : player_stand_backwards_image), pos, cell_size);
         }
     }
     else {

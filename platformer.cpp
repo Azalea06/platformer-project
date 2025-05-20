@@ -28,8 +28,8 @@ void update_game() {
             }
 
             // Calculating collisions to decide whether the player is allowed to jump
-            player::get_instance_player().is_player_on_ground = LevelController::get_instance_level().is_colliding({player::get_instance_player().get_player_pos().x, player::get_instance_player().get_player_pos().y + 0.1f}, WALL);
-            if ((IsKeyDown(KEY_UP) || IsKeyDown(KEY_W) || IsKeyDown(KEY_SPACE)) && player::get_instance_player().is_player_on_ground) {
+            player::get_instance_player().set_is_player_on_ground( LevelController::get_instance_level().is_colliding({player::get_instance_player().get_player_pos().x, player::get_instance_player().get_player_pos().y + 0.1f}, WALL));
+            if ((IsKeyDown(KEY_UP) || IsKeyDown(KEY_W) || IsKeyDown(KEY_SPACE)) && player::get_instance_player().get_is_player_on_ground()) {
                 player::get_instance_player().set_player_y_velocity(-JUMP_STRENGTH);
             }
 
@@ -51,7 +51,7 @@ void update_game() {
             player::get_instance_player().update_player_gravity();
 
             if (IsKeyPressed(KEY_ENTER)) {
-                if (player::get_instance_player().get_player_lives() > 0) {
+                if (player_lives > 0) {
                     LevelController::get_instance_level().load_level(0);
                     game_state = GAME_STATE;
                 }
@@ -126,6 +126,7 @@ int main() {
     load_fonts();
     load_images();
     load_sounds();
+    LevelController::get_instance_level().TakeLevelsFromFile("data/levels.rll");
     LevelController::get_instance_level().load_level();
 
     while (!WindowShouldClose()) {
