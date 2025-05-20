@@ -1,5 +1,5 @@
-#ifndef ENEMIES_CONTROLER_H
-#define ENEMIES_CONTROLER_H
+#ifndef ENEMIES_CONTROLLER_H
+#define ENEMIES_CONTROLLER_H
 
 #include <vector>
 #include <raylib.h>

@@ -2,7 +2,7 @@
 #define GLOBALS_H
 
 #include "raylib.h"
-
+#include "level.h"
 #include <vector>
 #include <string>
 #include <cstddef>
@@ -21,10 +21,12 @@ inline const char WALL      = '#',
 
 /* Levels */
 
+/*
 struct level {
     size_t rows = 0, columns = 0;
     char *data = nullptr;
 };
+*/
 
 inline char LEVEL_1_DATA[] = {
         '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',
@@ -40,6 +42,8 @@ inline char LEVEL_1_DATA[] = {
         '#', '#', '=', '=', '=', '#', '#', '-', '@', '-', '-', '-', '-', '-', '=', '=', '=', '=', '=', '=', '-', '-', '-', '#', '#', '-', '-', '-', '&', '-', '-', '-', '#', '#', '=', '=', '=', '=', '#', '#', '^', '^', '-', '-', '-', '-', '#', '#', '#', '=', '=', '=', '=', '=', '#', '#', '#', '-', '-', '-', '-', '-', '-', 'E', '-', '#', '#', '=', '=', '=', '#', '#',
         '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '=', '=', '=', '=', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '=', '=', '=', '=', '=', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#',
 };
+
+
 
 inline level LEVEL_1 = {
         12, 72,
@@ -93,15 +97,20 @@ inline level LEVELS[LEVEL_COUNT] = {
         LEVEL_1, LEVEL_2, LEVEL_3
 };
 
+
 /* Loaded Level Data */
 
+/*
 inline level current_level;
 inline char *current_level_data;
+*/
 
 /* Timer-mechanic related */
 inline const int MAX_LEVEL_TIME = 50 * 60;
 inline int timer = MAX_LEVEL_TIME;
 inline int time_to_coin_counter = 0;
+
+
 
 /* Physics constants */
 
@@ -138,6 +147,7 @@ struct Enemy {
 inline std::vector<Enemy> enemies;
 */
 #include "enemies_controller.h"
+
 /* Graphic Metrics */
 
 // UI
@@ -325,6 +335,7 @@ void draw_victory_menu();
 
 // LEVEL_H
 
+/*
 bool is_inside_level(int row, int column);
 bool is_colliding(Vector2 pos, char look_for = '#');
 char& get_collider(Vector2 pos, char look_for);
@@ -335,6 +346,8 @@ void unload_level();
 
 char& get_level_cell(size_t row, size_t column);
 void set_level_cell(size_t row, size_t column, char chr);
+
+*/
 
 // PLAYER_H
 
