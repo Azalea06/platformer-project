@@ -1,8 +1,7 @@
 #include "level_controller.h"
-#include "enemies_controller.h"
-#include "level.h"
 #include "raylib.h"
 #include "globals.h"
+#include "player.h"
 
 
 bool LevelController::is_inside_level(int row, int column) {
@@ -81,7 +80,7 @@ void LevelController::load_level(int offset) {
     }
     get_instance_level().set_current_level(level{rows, columns, current_level_data});
     // Instantiate entities
-    spawn_player();
+    player::get_instance_player().spawn_player();
     EnemiesController::get_instance().spawn_enemies();
 
     // Calculate positioning and sizes
